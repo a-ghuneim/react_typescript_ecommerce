@@ -15,8 +15,18 @@ function Home() {
           <div className="row g-0 gx-5 align-items-end">
             <ProduceHeading />
             <div className="col-lg-6 text-lg-end mb-4 mb-lg-5">
-              <Link className="btn btn-outline-primary me-2" to="/products?category=Fruits">Fruits</Link>
-              <Link className="btn btn-outline-primary" to="/products?category=Vegetables">Vegetables</Link>
+              <Link
+                className="btn btn-outline-primary me-2"
+                to="/products?category=Fruits"
+              >
+                Fruits
+              </Link>
+              <Link
+                className="btn btn-outline-primary"
+                to="/products?category=Vegetables"
+              >
+                Vegetables
+              </Link>
             </div>
           </div>
           <ProductGrid items={products} />

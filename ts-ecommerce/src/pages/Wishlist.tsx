@@ -13,11 +13,16 @@ export default function Wishlist() {
         {wishlistCount === 0 ? (
           <div className="text-center py-4">
             <h2>Your wishlist is empty</h2>
-            <Link className="btn btn-primary rounded-pill" to="/products">Explore products</Link>
+            <Link className="btn btn-primary rounded-pill" to="/products">
+              Explore products
+            </Link>
           </div>
         ) : (
           <>
-            <p>{wishlistCount} saved {wishlistCount === 1 ? "product" : "products"}</p>
+            <p>
+              {wishlistCount} saved{" "}
+              {wishlistCount === 1 ? "product" : "products"}
+            </p>
             <ProductGrid items={wishlist} />
           </>
         )}

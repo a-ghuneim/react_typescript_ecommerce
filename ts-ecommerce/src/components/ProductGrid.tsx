@@ -6,7 +6,7 @@ export default function ProductGrid({ items }: { items: Product[] }) {
     <div className="row g-4">
       {items.map((product) => (
         <div key={product.id} className="col-xl-3 col-lg-4 col-md-6">
-          <ProductCard {...product} />
+          <ProductCard product={product} />
         </div>
       ))}
     </div>

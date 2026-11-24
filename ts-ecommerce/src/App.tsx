@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
@@ -7,8 +7,8 @@ import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-function App(){
-  return(
+function App() {
+  return (
     <>
       <Navbar />
       <main>
@@ -22,6 +22,6 @@ function App(){
       </main>
       <Footer />
     </>
-  )
+  );
 }
 export default App;

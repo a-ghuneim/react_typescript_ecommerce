@@ -1,32 +1,36 @@
-# React + TypeScript + Vite
+# Foody Produce Shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Foody is a React and TypeScript storefront for browsing produce, saving favorites, and placing a demo order.
 
-Currently, two official plugins are available:
+## Run it locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Use Node.js 22.12 or newer. From the repository root, run:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+cd ts-ecommerce
+npm ci
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open the local URL printed by Vite. Run `npm run lint` to check the code and `npm run build` to type-check and create the production files in `dist`.
+
+## Where to start
+
+| To understand or change | Start here |
+| --- | --- |
+| How React starts and where the shared state is set up | [src/main.tsx](src/main.tsx) |
+| Which page opens for each URL | [src/App.tsx](src/App.tsx) |
+| Product names, prices, categories, and images | [src/data/products.ts](src/data/products.ts) |
+| Search, filters, and sorting | [src/pages/Products.tsx](src/pages/Products.tsx) |
+| What happens when you click Add to cart or Wishlist | [src/components/ProductCard.tsx](src/components/ProductCard.tsx) |
+| Cart quantities and totals | [src/contexts/CartProvider.tsx](src/contexts/CartProvider.tsx) |
+| How products are saved and removed from the wishlist | [src/contexts/WishlistProvider.tsx](src/contexts/WishlistProvider.tsx) |
+| Delivery form validation and order confirmation | [src/pages/Checkout.tsx](src/pages/Checkout.tsx) |
+| Foody styles and images | [src/css/styles.css](src/css/styles.css) and [public/img](public/img) |
+
+## Follow one click
+
+1. Click **Add to cart** on a product card. The card passes the product to `addToCart`.
+2. `CartProvider` adds the product or increases its quantity. React updates the cart page and navbar count from that shared state.
+3. The provider saves the cart to `localStorage` and reads it when the app starts. The wishlist follows the same pattern.
+4. Checkout validates the delivery form, keeps the order details for the confirmation screen, and clears the cart. The order and payment are simulated in the browser.

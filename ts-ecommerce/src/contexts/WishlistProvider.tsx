@@ -6,8 +6,14 @@ import { readSavedItems, saveItems } from "./storeStorage";
 
 const storageKey = "foody-wishlist";
 
-export default function WishlistProvider({ children }: { children: ReactNode }) {
-  const [wishlist, setWishlist] = useState(() => readSavedItems<Product>(storageKey));
+export default function WishlistProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const [wishlist, setWishlist] = useState(() =>
+    readSavedItems<Product>(storageKey),
+  );
 
   useEffect(() => {
     saveItems(storageKey, wishlist);
@@ -22,22 +28,19 @@ export default function WishlistProvider({ children }: { children: ReactNode }) 
     });
   }
 
-  function removeFromWishlist(id: number) {
-    setWishlist((items) => items.filter((item) => item.id !== id));
-  }
-
   function isInWishlist(id: number) {
     return wishlist.some((item) => item.id === id);
   }
 
   return (
-    <WishlistContext.Provider value={{
-      wishlist,
-      toggleWishlist,
-      removeFromWishlist,
-      isInWishlist,
-      wishlistCount: wishlist.length,
-    }}>
+    <WishlistContext.Provider
+      value={{
+        wishlist,
+        toggleWishlist,
+        isInWishlist,
+        wishlistCount: wishlist.length,
+      }}
+    >
       {children}
     </WishlistContext.Provider>
   );
