@@ -14,19 +14,19 @@ function HomeHero() {
                 <div className="row justify-content-start">
                   <div className="col-lg-7">
                     <h1 className="display-2 mb-5 animated slideInDown">
-                      Organic Food Is Good For Health
+                      Fresh produce for everyday cooking
                     </h1>
                     <a
-                      href=""
+                      href="#produce"
                       className="btn btn-primary rounded-pill py-sm-3 px-sm-5"
                     >
-                      Products
+                      Shop produce
                     </a>
                     <a
-                      href=""
+                      href="#about"
                       className="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3"
                     >
-                      Services
+                      About Foody
                     </a>
                   </div>
                 </div>
@@ -40,19 +40,19 @@ function HomeHero() {
                 <div className="row justify-content-start">
                   <div className="col-lg-7">
                     <h1 className="display-2 mb-5 animated slideInDown">
-                      Natural Food Is Always Healthy
+                      Fruit for snacks, smoothies, and sharing
                     </h1>
                     <a
-                      href=""
+                      href="#produce"
                       className="btn btn-primary rounded-pill py-sm-3 px-sm-5"
                     >
-                      Products
+                      Shop produce
                     </a>
                     <a
-                      href=""
+                      href="#about"
                       className="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3"
                     >
-                      Services
+                      About Foody
                     </a>
                   </div>
                 </div>
