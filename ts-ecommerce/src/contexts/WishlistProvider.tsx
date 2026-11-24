@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
-import type { Product } from "../data/products";
+import { Product } from "../models/Product";
+import type { ProductDetails } from "../models/Product";
 import { WishlistContext } from "./WishlistContext";
 import { readSavedItems, saveItems } from "./storeStorage";
 
@@ -12,7 +13,7 @@ export default function WishlistProvider({
   children: ReactNode;
 }) {
   const [wishlist, setWishlist] = useState(() =>
-    readSavedItems<Product>(storageKey),
+    readSavedItems<ProductDetails>(storageKey).map((item) => new Product(item)),
   );
 
   useEffect(() => {

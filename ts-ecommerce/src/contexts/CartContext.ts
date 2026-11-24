@@ -1,9 +1,6 @@
 import { createContext, useContext } from "react";
-import type { Product } from "../data/products";
-
-export type CartItem = Product & {
-  quantity: number;
-};
+import type { Product } from "../models/Product";
+import type { CartItem } from "../models/CartItem";
 
 type CartContextType = {
   cart: CartItem[];

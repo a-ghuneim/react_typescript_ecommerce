@@ -3,7 +3,7 @@ import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import ProductsHeader from "../components/ProductsHeader";
 import { useCart } from "../contexts/CartContext";
-import type { CartItem } from "../contexts/CartContext";
+import type { CartItem } from "../models/CartItem";
 
 const fields = [
   { name: "fullName", label: "Full name", type: "text", autoComplete: "name" },
@@ -76,7 +76,7 @@ function CheckoutSummary({
           <span>
             {item.name} × {item.quantity}
           </span>
-          <strong>${(item.price * item.quantity).toFixed(2)}</strong>
+          <strong>${item.lineTotal.toFixed(2)}</strong>
         </p>
       ))}
       <hr />

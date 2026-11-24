@@ -1,8 +1,8 @@
-import type { Product } from "../data/products";
+import type { Product } from "../models/Product";
 import { useCart } from "../contexts/CartContext";
 import { useWishlist } from "../contexts/WishlistContext";
 function ProductCard({ product }: { product: Product }) {
-  const { name, price, image, id } = product;
+  const { name, formattedPrice, image, id } = product;
   const { addToCart } = useCart();
 
   const { toggleWishlist, isInWishlist } = useWishlist();
@@ -15,7 +15,7 @@ function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="text-center p-4">
         <h3 className="d-block h5 mb-2">{name}</h3>
-        <span className="text-primary me-1">${price.toFixed(2)}</span>
+        <span className="text-primary me-1">{formattedPrice}</span>
       </div>
       <div className="d-flex border-top">
         <small className="w-50 text-center border-end py-2">

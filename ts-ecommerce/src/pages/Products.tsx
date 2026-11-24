@@ -4,20 +4,26 @@ import ProduceHeading from "../components/ProduceHeading";
 import ProductGrid from "../components/ProductGrid";
 import ProductsHeader from "../components/ProductsHeader";
 import { products } from "../data/products";
+import { ProductCategory } from "../models/Product";
 
-const categories = [...new Set(products.map((product) => product.category))];
+enum SortOrder {
+  Default = "",
+  PriceAscending = "low-to-high",
+  PriceDescending = "high-to-low",
+}
+
+const categories = Object.values(ProductCategory);
 
 function Products() {
   const [search, setSearch] = useState("");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-  const [sortOrder, setSortOrder] = useState("");
+  const [sortOrder, setSortOrder] = useState(SortOrder.Default);
   // Keep the category in the URL so the home links and browser Back button work.
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedCategory = searchParams.get("category") ?? "";
-  const category = categories.includes(requestedCategory)
-    ? requestedCategory
-    : "";
+  const category =
+    categories.find((value) => value === requestedCategory) ?? "";
   const searchTerm = search.trim().toLowerCase();
 
   const filteredProducts = products.filter((product) => {
@@ -32,9 +38,9 @@ function Products() {
     );
   });
 
-  if (sortOrder === "low-to-high") {
+  if (sortOrder === SortOrder.PriceAscending) {
     filteredProducts.sort((a, b) => a.price - b.price);
-  } else if (sortOrder === "high-to-low") {
+  } else if (sortOrder === SortOrder.PriceDescending) {
     filteredProducts.sort((a, b) => b.price - a.price);
   }
 
@@ -52,7 +58,7 @@ function Products() {
     setSearch("");
     setMinPrice("");
     setMaxPrice("");
-    setSortOrder("");
+    setSortOrder(SortOrder.Default);
     if (requestedCategory) changeCategory("");
   }
 
@@ -129,11 +135,21 @@ function Products() {
                 id="product-sort"
                 className="form-select"
                 value={sortOrder}
-                onChange={(event) => setSortOrder(event.target.value)}
+                onChange={(event) => {
+                  const value = event.target.value;
+                  const order = Object.values(SortOrder).find(
+                    (choice) => choice === value,
+                  );
+                  setSortOrder(order ?? SortOrder.Default);
+                }}
               >
-                <option value="">Default</option>
-                <option value="low-to-high">Price: low to high</option>
-                <option value="high-to-low">Price: high to low</option>
+                <option value={SortOrder.Default}>Default</option>
+                <option value={SortOrder.PriceAscending}>
+                  Price: low to high
+                </option>
+                <option value={SortOrder.PriceDescending}>
+                  Price: high to low
+                </option>
               </select>
             </div>
             <div className="col-auto">

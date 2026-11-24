@@ -34,7 +34,7 @@ function Cart() {
                   <div className="flex-grow-1">
                     <h3 className="h5 mb-1">{item.name}</h3>
                     <p className="mb-0">
-                      {item.category} · ${item.price.toFixed(2)} each
+                      {item.category} · {item.formattedPrice} each
                     </p>
                   </div>
                   <div className="d-flex align-items-center gap-2">
@@ -57,7 +57,7 @@ function Cart() {
                       +
                     </button>
                   </div>
-                  <strong>${(item.price * item.quantity).toFixed(2)}</strong>
+                  <strong>${item.lineTotal.toFixed(2)}</strong>
                   <button
                     type="button"
                     className="btn btn-sm btn-outline-secondary"

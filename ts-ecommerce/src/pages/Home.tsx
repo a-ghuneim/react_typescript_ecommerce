@@ -4,6 +4,7 @@ import ProductGrid from "../components/ProductGrid";
 import HomeHero from "../components/HomeHero";
 import AboutAndFeatures from "../components/AboutAndFeatures";
 import { products } from "../data/products";
+import { ProductCategory } from "../models/Product";
 
 function Home() {
   return (
@@ -17,13 +18,13 @@ function Home() {
             <div className="col-lg-6 text-lg-end mb-4 mb-lg-5">
               <Link
                 className="btn btn-outline-primary me-2"
-                to="/products?category=Fruits"
+                to={`/products?category=${ProductCategory.Fruits}`}
               >
                 Fruits
               </Link>
               <Link
                 className="btn btn-outline-primary"
-                to="/products?category=Vegetables"
+                to={`/products?category=${ProductCategory.Vegetables}`}
               >
                 Vegetables
               </Link>

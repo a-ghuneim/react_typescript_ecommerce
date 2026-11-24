@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { Product } from "../data/products";
+import type { Product } from "../models/Product";
 
 type WishlistContextType = {
   wishlist: Product[];
